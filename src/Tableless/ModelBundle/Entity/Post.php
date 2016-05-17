@@ -48,7 +48,7 @@ class Post extends Timestampable
     private $cover; 
     
     /** 
-     * @Assert\File(maxSize="1000000") 
+     * @Assert\File(maxSize="2000000") 
      */ 
     private $file;
 
