@@ -1,0 +1,29 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Simples Blog{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h1>Post creation</h1>
+
+            {{ form(form) }}
+
+            <ul class="record_actions">
+                <li>
+                    <a href="{{ path('post') }}">
+                        Back to the list
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
