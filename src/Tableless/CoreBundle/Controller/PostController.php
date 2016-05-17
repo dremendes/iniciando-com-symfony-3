@@ -46,6 +46,7 @@ class PostController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $post->upload(); 
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
@@ -88,6 +89,7 @@ class PostController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $post->upload(); 
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
