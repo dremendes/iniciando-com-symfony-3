@@ -109,15 +109,6 @@ class Post extends Timestampable
     private $author;
 
     /**
-     * Construct
-     */
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
-    }
-
-    /**
      * Set author
      *
      * @param \Tableless\ModelBundle\Entity\Author $author
