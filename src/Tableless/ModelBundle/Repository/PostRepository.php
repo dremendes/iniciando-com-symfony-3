@@ -2,6 +2,8 @@
 
 namespace Tableless\ModelBundle\Repository;
 
+use Doctrine\ORM\EntityRepository;
+
 /**
  * PostRepository
  *
@@ -10,4 +12,22 @@ namespace Tableless\ModelBundle\Repository;
  */
 class PostRepository extends \Doctrine\ORM\EntityRepository
 {
+	private function getQueryBuilder()
+	{
+		$em = $this->getEntityManager();
+
+		$queryBuilder = $em->getRepository('TablelessModelBundle:Post')
+						   ->createQueryBuilder('p');
+
+		return $queryBuilder;
+	}
+
+	public function findAllInOrder()
+	{
+	    $qb = $this->getQueryBuilder()
+	    		   ->orderBy('p.createdAt', 'desc');
+	 
+	    return $qb->getQuery()->getResult();
+	}
+
 }
