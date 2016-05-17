@@ -4,6 +4,7 @@ namespace Tableless\ModelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Author
@@ -64,5 +65,55 @@ class Author extends Timestampable
     {
         return $this->name;
     }
-}
 
+    /** 
+     * @var ArrayCollection 
+     * 
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="author", cascade={"remove"}) 
+     */ 
+    private $post;
+
+    /** 
+     * Constructor 
+     */ 
+    public function __construct() 
+    { 
+         parent::__construct();
+    
+        $this->post = new ArrayCollection(); 
+    }
+
+    /**
+     * Add post
+     *
+     * @param \Tableless\ModelBundle\Entity\Post $post
+     *
+     * @return Author
+     */
+    public function addPost(\Tableless\ModelBundle\Entity\Post $post)
+    {
+        $this->post[] = $post;
+
+        return $this;
+    }
+
+    /**
+     * Remove post
+     *
+     * @param \Tableless\ModelBundle\Entity\Post $post
+     */
+    public function removePost(\Tableless\ModelBundle\Entity\Post $post)
+    {
+        $this->post->removeElement($post);
+    }
+
+    /**
+     * Get post
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+}

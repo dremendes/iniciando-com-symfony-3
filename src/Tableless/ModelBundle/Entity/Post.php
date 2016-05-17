@@ -7,9 +7,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
- *
+ * 
+ * /// isso está após ORM\Entity: (repositoryClass="Tableless\ModelBundle\Repository\PostRepository")
  * @ORM\Table(name="post")
- * @ORM\Entity(repositoryClass="Tableless\ModelBundle\Repository\PostRepository")
+ * @ORM\Entity
+ *
  */
 class Post extends Timestampable
 {
@@ -113,5 +115,29 @@ class Post extends Timestampable
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * Set author
+     *
+     * @param \Tableless\ModelBundle\Entity\Author $author
+     *
+     * @return Post
+     */
+    public function setAuthor(\Tableless\ModelBundle\Entity\Author $author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \Tableless\ModelBundle\Entity\Author
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }
