@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class IndexController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="index")
      * @Template("TablelessCoreBundle:IndexController:index.html.twig")
      */
     public function indexAction()
@@ -24,7 +24,7 @@ class IndexController extends Controller
     }
 
     /**
-     * @Route("/show/{id}")
+     * @Route("/show/{id}", name="show")
      * @Template("TablelessCoreBundle:IndexController:show.html.twig")
      */
     public function showAction($id)
