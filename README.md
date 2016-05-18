@@ -1,4 +1,4 @@
-Iniciando com Symfony 2
+Iniciando com Symfony 3
 =======================
  
 http://tableless.com.br/
