@@ -3,12 +3,15 @@
 security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    # providers:
+    #     in_memory:
+    #         memory: ~
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username
 
     encoders:
-            FOS\UserBundle\Model\UserInterface: sha512
+            FOS\UserBundle\Model\UserInterface: bcrypt
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
