@@ -1,15 +1,15 @@
-tableless_user:
-    resource: "@TablelessUserBundle/Controller/"
+# tableless_user:
+#     resource: "@TablelessUserBundle/Controller/"
+#     type:     annotation
+#     prefix:   /
+
+tableless_model_author:
+    resource: "@TablelessCoreBundle/Controller/AuthorController.php"
     type:     annotation
-    prefix:   /
 
-# tableless_model_author:
-#     resource: "@TablelessModelBundle/Controller/AuthorController.php"
-#     type:     annotation
-
-# tableless_model_post:
-#     resource: "@TablelessModelBundle/Controller/PostController.php"
-#     type:     annotation
+tableless_model_post:
+    resource: "@TablelessCoreBundle/Controller/PostController.php"
+    type:     annotation
 
 tableless_core:
     resource: "@TablelessCoreBundle/Controller/"

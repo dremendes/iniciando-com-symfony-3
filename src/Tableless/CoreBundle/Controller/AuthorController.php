@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Tableless\ModelBundle\Entity\Author;
 use Tableless\ModelBundle\Form\AuthorType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Author controller.
@@ -41,6 +42,12 @@ class AuthorController extends Controller
      */
     public function newAction(Request $request)
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+         
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException(" Somente o administrador pode acessar! ");
+        }
+
         $author = new Author();
         $form = $this->createForm('Tableless\ModelBundle\Form\AuthorType', $author);
         $form->handleRequest($request);
